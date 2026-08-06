@@ -60,5 +60,20 @@ To refresh one, retake it at the same size and overwrite the file — no code ch
 
 ## Deploying
 
-Vercel, connected to the Git repo. `npm run build` must pass — TypeScript errors are no longer
-ignored (`next.config.mjs` used to set `ignoreBuildErrors: true`; it doesn't any more).
+Repo: <https://github.com/zdorsane/portfolio> (public, `main`).
+
+Vercel is connected to this repo, so **every push to `main` deploys automatically**. The normal
+workflow is:
+
+```bash
+git add -A
+git commit -m "what changed"
+git push
+```
+
+Vercel's build settings should be left at the framework defaults — in particular the build command
+must stay `next build`. Do not restore the old v0 override
+(`node .v0/inject-built-with-v0.mjs && next build`); it re-injects the "Built with v0" badge.
+
+`npm run build` must pass locally before you push — TypeScript errors are no longer ignored
+(`next.config.mjs` used to set `ignoreBuildErrors: true`; it doesn't any more).
