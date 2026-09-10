@@ -203,6 +203,21 @@ const en: Dictionary = {
         description:
           "Interactive maths courses plus a full learning-management system. I owned the UI/UX end to end — Figma design system through to the React implementation — for both the student course platform and the progress-tracking dashboard.",
       },
+      "elite-sante-dentaire": {
+        title: "Elite Santé Dentaire — dental practice",
+        description:
+          "Site for a multidisciplinary dental practice in Constantine: treatments, documented before/after cases and online booking. Dark editorial layout, bilingual French/Arabic.",
+      },
+      fynliq: {
+        title: "Fynliq — student finance landing page",
+        description:
+          "Landing page for a product that reads a student's own aid award and shows what it actually leaves them. React, on a hand-written token-based design system.",
+      },
+      "copro-performance": {
+        title: "Copro Performance Conseil",
+        description:
+          "Site for an independent French condominium-advisory firm. A hand-built multi-page static site that routes three visitor profiles to their own track.",
+      },
       techwaves: {
         title: "TechWaves",
         description:
@@ -481,6 +496,21 @@ const fr: Dictionary = {
         title: "ActivMaths — plateforme EdTech",
         description:
           "Cours de mathématiques interactifs et un LMS complet. J'ai pris en charge l'UI/UX de bout en bout — du design system Figma à l'implémentation React — pour la plateforme de cours et le tableau de bord de suivi des progrès.",
+      },
+      "elite-sante-dentaire": {
+        title: "Elite Santé Dentaire — cabinet dentaire",
+        description:
+          "Site d'un cabinet dentaire pluridisciplinaire à Constantine : soins, cas avant/après documentés et prise de rendez-vous en ligne. Mise en page éditoriale sombre, bilingue français/arabe.",
+      },
+      fynliq: {
+        title: "Fynliq — landing page finance étudiante",
+        description:
+          "Landing page d'un produit qui lit la notification de bourse d'un étudiant et montre ce qu'elle lui laisse réellement. En React, sur un design system de tokens écrit à la main.",
+      },
+      "copro-performance": {
+        title: "Copro Performance Conseil",
+        description:
+          "Site d'un cabinet de conseil indépendant en copropriété. Un site statique multi-pages construit à la main, qui oriente trois profils de visiteurs vers leur propre parcours.",
       },
       techwaves: {
         title: "TechWaves",
