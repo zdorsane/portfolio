@@ -147,14 +147,29 @@
 /* Glassmorphism utilities */
 .glass {
   background: oklch(0.16 0.01 240 / 0.6);
+  -webkit-backdrop-filter: blur(20px);
   backdrop-filter: blur(20px);
   border: 1px solid oklch(0.28 0.01 240 / 0.5);
 }
 
 .glass-strong {
   background: oklch(0.16 0.01 240 / 0.8);
+  -webkit-backdrop-filter: blur(30px);
   backdrop-filter: blur(30px);
   border: 1px solid oklch(0.28 0.01 240 / 0.6);
+}
+
+/* Phones get solid panels instead of live blur. Every blurred layer is a separate
+   GPU surface, and a page-long stack of them is what runs iOS Safari out of memory
+   and makes it reload the tab in a loop. The canvases are off on phones, so there
+   is nothing behind the cards worth blurring anyway. */
+@media (max-width: 767px), (hover: none) and (pointer: coarse) {
+  .glass,
+  .glass-strong {
+    -webkit-backdrop-filter: none;
+    backdrop-filter: none;
+    background: oklch(0.16 0.01 240 / 0.92);
+  }
 }
 
 /* Gradient text */
@@ -225,4 +240,16 @@
   .custom-cursor {
     display: none !important;
   }
+}
+
+/* Reveal failsafe — see the inline script in app/layout.tsx.
+   Framer Motion server-renders every animated section at opacity:0, so until it
+   hydrates the page is black and empty. If the animation layer has not taken
+   over within 2.5s — dropped chunk, browser too old to parse the bundle, very
+   slow connection — the inline timer adds .reveal-all and the content shows
+   itself. !important is required: it has to win against Framer's inline styles
+   if the bundle does eventually arrive and set them. */
+.reveal-all [style*="opacity:0"] {
+  opacity: 1 !important;
+  transform: none !important;
 }

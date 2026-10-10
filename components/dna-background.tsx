@@ -24,7 +24,7 @@ export function DNABackground() {
 
     const reducedMotion = window.matchMedia("(prefers-reduced-motion: reduce)").matches
     // Decorative only: on narrow screens the strands crowd the copy and cost battery for nothing.
-    if (window.matchMedia("(max-width: 767px)").matches) return
+    if (window.matchMedia("(max-width: 767px), (hover: none) and (pointer: coarse)").matches) return
 
     let animationFrameId = 0
     let time = 0

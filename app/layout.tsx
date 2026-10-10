@@ -2,6 +2,7 @@ import type { Metadata } from 'next'
 import { Geist, Geist_Mono } from 'next/font/google'
 import { Analytics } from '@vercel/analytics/next'
 import { LanguageProvider } from '@/lib/i18n/context'
+import { RevealFailsafe } from '@/components/reveal-failsafe'
 import { EMAIL, SITE_URL, SOCIALS } from '@/lib/content'
 import { dictionaries } from '@/lib/i18n/dictionaries'
 import { defaultLocale } from '@/lib/i18n/config'
@@ -101,10 +102,30 @@ export default function RootLayout({ children }: Readonly<{ children: React.Reac
   return (
     <html lang={defaultLocale} className={`${geist.variable} ${geistMono.variable} bg-background`}>
       <body className="font-sans antialiased overflow-x-hidden">
+        {/*
+          Every animated section is server-rendered at opacity:0 and only revealed
+          once Framer Motion hydrates, which puts ~200KB of JavaScript between the
+          reader and any visible content. On a slow phone that is a long black
+          screen; if a chunk never arrives, it is a permanently black one. This
+          timer reveals the page on its own if the animation layer has not taken
+          over in time — <RevealFailsafe /> cancels it as soon as React runs, so a
+          normal load never reaches it. ES5 syntax on purpose: a browser too old to
+          parse the bundle must still be able to parse this.
+        */}
+        <script
+          dangerouslySetInnerHTML={{
+            __html:
+              "(function(){var d=document.documentElement;var t=setTimeout(function(){d.className+=' reveal-all'},2500);window.__cancelRevealFailsafe=function(){clearTimeout(t)}})()",
+          }}
+        />
+        <noscript>
+          <style>{`[style*="opacity:0"]{opacity:1!important;transform:none!important}`}</style>
+        </noscript>
         <script
           type="application/ld+json"
           dangerouslySetInnerHTML={{ __html: JSON.stringify(personSchema) }}
         />
+        <RevealFailsafe />
         <LanguageProvider>{children}</LanguageProvider>
         {process.env.NODE_ENV === 'production' && <Analytics />}
       </body>

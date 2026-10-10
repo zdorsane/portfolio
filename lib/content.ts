@@ -48,6 +48,15 @@ export const projects: Project[] = [
     tags: ["Next.js", "TypeScript", "Three.js", "Deep Learning", "FastAPI"],
   },
   {
+    id: "dentra",
+    featured: true,
+    year: "2026",
+    image: "/images/projects/dentra.png",
+    liveUrl: "https://dentra-gamma.vercel.app/",
+    repos: [],
+    tags: ["Next.js", "Tailwind CSS", "SaaS", "Healthcare", "AI insights"],
+  },
+  {
     id: "badis-ai",
     featured: true,
     year: "2025 — 2026",

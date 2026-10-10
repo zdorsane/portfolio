@@ -27,6 +27,9 @@ export function ParticleBackground() {
 
     // Respect the user's motion preference: draw a single static frame instead of animating.
     const reducedMotion = window.matchMedia("(prefers-reduced-motion: reduce)").matches
+    // Not on phones: a full-screen canvas redrawn every frame under the .glass cards makes
+    // iOS Safari recompute every backdrop blur per frame, which is enough to get the tab killed.
+    if (window.matchMedia("(max-width: 767px), (hover: none) and (pointer: coarse)").matches) return
 
     let animationFrameId = 0
     let particles: Particle[] = []

@@ -193,6 +193,11 @@ const en: Dictionary = {
         description:
           "My own startup. A deep-learning platform that predicts drug sensitivity (IC50) from a molecule's SMILES string and a cancer cell line's multi-omics profile, using a Bi-Interaction neural network trained on CCLE data. I built the model, the FastAPI inference service, and the entire Next.js product: 3D molecule viewer, batch virtual screening, uncertainty estimates and training dashboards.",
       },
+      dentra: {
+        title: "Dentra — operating system for dental clinics",
+        description:
+          "A SaaS product for dental practices, from solo practitioners to multi-site groups. Patient records with medical alerts and an FDI odontogram, multi-chair scheduling, inventory with expiry tracking, and an analytics view of revenue, chair utilisation and no-shows. Dentra AI reads the clinic's own data and answers in plain language — overdue follow-ups, stock forecasts, open treatment plans.",
+      },
       "badis-ai": {
         title: "Badis AI — administrative assistant",
         description:
@@ -486,6 +491,11 @@ const fr: Dictionary = {
         title: "Twin Covia — l'IA au service de l'oncologie de précision",
         description:
           "Ma startup. Une plateforme de deep learning qui prédit la sensibilité à un médicament (IC50) à partir de la chaîne SMILES d'une molécule et du profil multi-omique d'une lignée cellulaire cancéreuse, via un réseau de neurones Bi-Interaction entraîné sur les données CCLE. J'ai construit le modèle, le service d'inférence FastAPI et tout le produit Next.js : visualiseur de molécules 3D, criblage virtuel par lots, estimation d'incertitude et tableaux de bord d'entraînement.",
+      },
+      dentra: {
+        title: "Dentra — le système d'exploitation des cabinets dentaires",
+        description:
+          "Un SaaS pour les cabinets dentaires, du praticien seul aux groupes multi-sites. Dossiers patients avec alertes médicales et odontogramme FDI, planning multi-fauteuils, stock avec suivi des péremptions, et une vue analytique du chiffre d'affaires, de l'occupation des fauteuils et des rendez-vous manqués. Dentra AI lit les données du cabinet et répond en langage clair — relances en retard, prévisions de stock, plans de traitement ouverts.",
       },
       "badis-ai": {
         title: "Badis AI — assistant administratif",
