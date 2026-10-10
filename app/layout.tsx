@@ -2,7 +2,6 @@ import type { Metadata } from 'next'
 import { Geist, Geist_Mono } from 'next/font/google'
 import { Analytics } from '@vercel/analytics/next'
 import { LanguageProvider } from '@/lib/i18n/context'
-import { RevealFailsafe } from '@/components/reveal-failsafe'
 import { EMAIL, SITE_URL, SOCIALS } from '@/lib/content'
 import { dictionaries } from '@/lib/i18n/dictionaries'
 import { defaultLocale } from '@/lib/i18n/config'
@@ -104,18 +103,19 @@ export default function RootLayout({ children }: Readonly<{ children: React.Reac
       <body className="font-sans antialiased overflow-x-hidden">
         {/*
           Every animated section is server-rendered at opacity:0 and only revealed
-          once Framer Motion hydrates, which puts ~200KB of JavaScript between the
-          reader and any visible content. On a slow phone that is a long black
-          screen; if a chunk never arrives, it is a permanently black one. This
-          timer reveals the page on its own if the animation layer has not taken
-          over in time — <RevealFailsafe /> cancels it as soon as React runs, so a
-          normal load never reaches it. ES5 syntax on purpose: a browser too old to
+          once Framer Motion animates it in. If that never happens — a chunk that
+          never arrives, a bundle an older iOS Safari cannot parse, or React running
+          while the animations silently fail — the page stays black. So rather than
+          trusting that React started, this checks what the reader actually sees:
+          if the hero heading is still invisible after 3s (and again after 7s), it
+          reveals everything. The hero animation finishes in under a second, so a
+          healthy load never trips it. ES5 syntax on purpose: a browser too old to
           parse the bundle must still be able to parse this.
         */}
         <script
           dangerouslySetInnerHTML={{
             __html:
-              "(function(){var d=document.documentElement;var t=setTimeout(function(){d.className+=' reveal-all'},2500);window.__cancelRevealFailsafe=function(){clearTimeout(t)}})()",
+              "(function(){var d=document.documentElement;function check(){var e=document.querySelector('h1'),o=1;if(!e)return;while(e&&e.nodeType===1){o*=parseFloat(getComputedStyle(e).opacity)||0;e=e.parentElement}if(o<0.5&&d.className.indexOf('reveal-all')<0)d.className+=' reveal-all'}setTimeout(check,3000);setTimeout(check,7000)})()",
           }}
         />
         <noscript>
@@ -125,7 +125,6 @@ export default function RootLayout({ children }: Readonly<{ children: React.Reac
           type="application/ld+json"
           dangerouslySetInnerHTML={{ __html: JSON.stringify(personSchema) }}
         />
-        <RevealFailsafe />
         <LanguageProvider>{children}</LanguageProvider>
         {process.env.NODE_ENV === 'production' && <Analytics />}
       </body>

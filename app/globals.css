@@ -248,8 +248,11 @@
    over within 2.5s — dropped chunk, browser too old to parse the bundle, very
    slow connection — the inline timer adds .reveal-all and the content shows
    itself. !important is required: it has to win against Framer's inline styles
-   if the bundle does eventually arrive and set them. */
-.reveal-all [style*="opacity:0"] {
+   if the bundle does eventually arrive and set them. Both spellings are needed:
+   the server writes "opacity:0", the browser re-serialises it as "opacity: 0"
+   once Framer has touched the element. */
+.reveal-all [style*="opacity:0"],
+.reveal-all [style*="opacity: 0"] {
   opacity: 1 !important;
   transform: none !important;
 }
