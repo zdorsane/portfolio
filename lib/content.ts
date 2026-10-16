@@ -102,6 +102,15 @@ export const projects: Project[] = [
     tags: ["HTML / CSS", "JavaScript", "Multi-page site", "B2B"],
   },
   {
+    id: "cherry-pulse",
+    featured: false,
+    year: "2026",
+    image: "/images/projects/cherry-pulse.png",
+    liveUrl: "https://cherry-pulse.vercel.app/",
+    repos: [],
+    tags: ["Next.js", "E-commerce", "Motion design", "Cart & pre-order"],
+  },
+  {
     id: "techwaves",
     featured: false,
     year: "2025",
