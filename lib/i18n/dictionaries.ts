@@ -223,6 +223,11 @@ const en: Dictionary = {
         description:
           "Site for an independent French condominium-advisory firm. A hand-built multi-page static site that routes three visitor profiles to their own track.",
       },
+      "cherry-pulse": {
+        title: "Cherry Pulse — soda e-commerce",
+        description:
+          "Storefront for a concept cherry-soda brand pitched like a record release: a playable hero, four flavours as \"frequencies\", a drops calendar, and a cart with quantity controls and a limited-edition pre-order.",
+      },
       techwaves: {
         title: "TechWaves",
         description:
@@ -521,6 +526,11 @@ const fr: Dictionary = {
         title: "Copro Performance Conseil",
         description:
           "Site d'un cabinet de conseil indépendant en copropriété. Un site statique multi-pages construit à la main, qui oriente trois profils de visiteurs vers leur propre parcours.",
+      },
+      "cherry-pulse": {
+        title: "Cherry Pulse — e-commerce soda",
+        description:
+          "Boutique en ligne d'une marque concept de soda à la cerise, présentée comme une sortie musicale : hero jouable, quatre saveurs en « fréquences », calendrier des drops, et panier avec quantités et précommande d'une édition limitée.",
       },
       techwaves: {
         title: "TechWaves",
